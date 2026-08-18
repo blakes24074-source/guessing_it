@@ -32,7 +32,11 @@ def mainloop ():
                 print("Correct guess! Guess count:",guesses)
                 break
 
-            print("Incorrect!")
+            print("Incorrect! ", end="")
+            if (guess > ans):
+                print("Guess is too high!")
+            else:
+                print("Guess is too low!")
             guesses += 1
 
 mainloop()
