@@ -29,6 +29,7 @@ def mainloop ():
 
             if (guess == ans):
                 print("Correct guess!")
-                continue
+                break
+            print("Incorrect!")
 
 mainloop()
