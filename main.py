@@ -14,6 +14,10 @@
 import random
 
 
+CONFIG = {
+    "min_ans" : 1, # minimum number that can be the correct answer
+    "max_ans" : 100, # maximum number that can be the correct answer
+}
 
 def validate_guess (inp):
     try:
@@ -29,7 +33,7 @@ def mainloop ():
             guess = validate_guess(input("Guess: "))
 
             if (guess == ans):
-                print("Correct guess! Guess count:",guesses)
+                print("Correct guess! Guess count:",guesses,"\n\n")
                 break
 
             print("Incorrect! ", end="")
