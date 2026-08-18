@@ -24,12 +24,15 @@ def validate_guess (inp):
 def mainloop ():
     while (True):
         ans = random.randint(1, 100)
+        guesses = 1 # add redundancy, we only need to add 1 after each incorrect guess to reduce operations
         while (True):
             guess = validate_guess(input("Guess: "))
 
             if (guess == ans):
-                print("Correct guess!")
+                print("Correct guess! Guess count:",guesses)
                 break
+
             print("Incorrect!")
+            guesses += 1
 
 mainloop()
