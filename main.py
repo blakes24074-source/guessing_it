@@ -26,7 +26,9 @@ def mainloop ():
         ans = random.randint(1, 100)
         while (True):
             guess = validate_guess(input("Guess: "))
-            
+
             if (guess == ans):
                 print("Correct guess!")
                 continue
+
+mainloop()
