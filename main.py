@@ -11,4 +11,21 @@
     
 """
 
+import random
 
+
+
+def validate_guess (inp):
+    try:
+        return int(inp)
+    except:
+        return False
+
+def mainloop ():
+    while (True):
+        ans = random.randint(1, 100)
+        guess = validate_guess(input("Guess: "))
+
+        if (guess == ans):
+            print("Correct guess!")
+            continue
