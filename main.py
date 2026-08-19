@@ -84,8 +84,8 @@ def validate_guess (inp : str):
 """
 def mainloop ():
     while (True):
-        ans = random.randint(1, 100)
-        guesses = 1 # add redundancy, we only need to add 1 after each incorrect guess to reduce operations
+        ans = random.randint(CONFIG["min_ans"], CONFIG["max_ans"])
+        guesses = 1 # add redundancy, we only need to add 1 after each incorrect guess to reduce operations by 1
         while (True):
             guess = validate_guess(input("Guess: "))
 
