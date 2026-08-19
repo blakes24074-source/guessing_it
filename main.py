@@ -43,7 +43,7 @@ CONFIG = {
 @return {boolean} - whether or not the string is valid
 """
 def validate_name (name : str):
-	if (name < CONFIG["name_validation"]["min_len"] or name > CONFIG["name_validation"]["max_len"]):
+	if (len(name) < CONFIG["name_validation"]["min_len"] or len(name) > CONFIG["name_validation"]["max_len"]):
 		return False
 	if CONFIG["name_validation"]["allow_int"]:
 		return True
@@ -53,7 +53,7 @@ def validate_name (name : str):
 def intro():
 	print("Welcome to numberguesser!")
 	while (True):
-		input("Enter your name: ")
+		name = input("Enter your name: ")
 		if validate_name(name):
 			break
 		print("Invalid name!")
@@ -82,11 +82,13 @@ def validate_guess (inp : str):
 	!! will loop eternally, do not run code afterward !!
 """
 def mainloop ():
-	ans = random.randint(CONFIG["min_ans"], CONFIG["max_ans"])
 	while (True):
+		ans = random.randint(CONFIG["min_ans"], CONFIG["max_ans"])
 		guesses = 1 # add redundancy, we only need to add 1 after each incorrect guess to reduce operations by 1
+		guess_history = []
 		while (True):
 			guess = validate_guess(input("Guess: "))
+			guess_history.append(guess)
 			if (guess == ans):
 				print("Correct guess! Guess count:",guesses,"\n\n")
 				break
@@ -97,6 +99,9 @@ def mainloop ():
 			else:
 				print("Guess is too low!")
 			guesses += 1
+		print("Guesses:\n		")
+		for i in guess_history:
+			print(i, end=" ")
 
 if (__name__ == "__main__"):
 	intro()
