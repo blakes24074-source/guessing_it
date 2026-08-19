@@ -93,7 +93,7 @@ def mainloop ():
                 print("Correct guess! Guess count:",guesses,"\n\n")
                 break
 
-            print("Incorrect! ", end="")
+            print("Incorrect! ", end="") # redundancy!
             if (guess > ans):
                 print("Guess is too high!")
             else:
