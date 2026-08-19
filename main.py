@@ -43,7 +43,7 @@ CONFIG = {
 @return {boolean} - whether or not the string is valid
 """
 def validate_name (name : str):
-	if (len(name) < CONFIG["name_validation"]["min_len"] or len(name) > CONFIG["name_validation"]["max_len"]):
+	if (name < CONFIG["name_validation"]["min_len"] or name > CONFIG["name_validation"]["max_len"]):
 		return False
 	if CONFIG["name_validation"]["allow_int"]:
 		return True
@@ -53,7 +53,7 @@ def validate_name (name : str):
 def intro():
 	print("Welcome to numberguesser!")
 	while (True):
-		name = input("Enter your name: ")
+		input("Enter your name: ")
 		if validate_name(name):
 			break
 		print("Invalid name!")
@@ -82,12 +82,11 @@ def validate_guess (inp : str):
 	!! will loop eternally, do not run code afterward !!
 """
 def mainloop ():
+	ans = random.randint(CONFIG["min_ans"], CONFIG["max_ans"])
 	while (True):
-		ans = random.randint(CONFIG["min_ans"], CONFIG["max_ans"])
 		guesses = 1 # add redundancy, we only need to add 1 after each incorrect guess to reduce operations by 1
 		while (True):
 			guess = validate_guess(input("Guess: "))
-
 			if (guess == ans):
 				print("Correct guess! Guess count:",guesses,"\n\n")
 				break
