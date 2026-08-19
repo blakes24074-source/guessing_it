@@ -36,7 +36,12 @@ CONFIG = {
 
 """
     validate_name()
-        * TODO: add
+        * checks if the supplied string (name) is between two sets of lengths, and
+        * whether or not it has numbers in it
+
+@param {str} name - the string to validate
+
+@return {boolean} - whether or not the string is valid
 """
 def validate_name (name : str):
     if (len(name) < CONFIG["name_validation"]["min_len"] or len(name) > CONFIG["name_validation"]["max_len"]):
@@ -45,6 +50,16 @@ def validate_name (name : str):
         return True
     return name.isalpha()
 
+
+def intro():
+    print("Welcome to numberguesser!")
+    while (True):
+        name = input("Enter your name: ")
+        if validate_name(name):
+            break
+        print("Invalid name!")
+    print("\n\n\n\n")
+
 """
     validate_guess()
         * check if the string provided can be casted to an integer
@@ -52,7 +67,7 @@ def validate_name (name : str):
 
 @param {str} inp -- inputted string to be casted and checked
 
-@return {int || bool} -- int if successfully casted, bool if failed
+@return {int || bool} -- int if successfully casted, False if failed
 """
 def validate_guess (inp : str):
     try:
@@ -85,4 +100,6 @@ def mainloop ():
                 print("Guess is too low!")
             guesses += 1
 
-mainloop()
+if (__name__ == "__main__"):
+    intro()
+    mainloop()
